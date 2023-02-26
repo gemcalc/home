@@ -1,5 +1,5 @@
 function calculate() {
-  const word = document.getElementById("text-input").value.toUpperCase();
+  const word = document.getElementById("word").value.toUpperCase();
 
   let englishOrdinalValue = 0;
   let reducedValue = 0;

@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Word Calculator</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <label for="input">Enter a word or phrase:</label>
-    <input type="text" id="text-input" oninput="calculate()" />
+<html>
+<head>
+  <title>Word Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Word Calculator</h1>
+  <label for="word">Enter a word:</label>
+  <input type="text" id="word" onkeyup="calculate()" placeholder="Type here...">
 
-    <table>
-      <tr>
-        <th>English Ordinal</th>
-        <th>Reduced</th>
-      </tr>
-      <tr class="results">
-        <td id="english-ordinal-value">0</td>
-        <td id="reduced-value">0</td>
-      </tr>
-    </table>
-  </body>
+  <table class="results">
+    <tr>
+      <th>English Ordinal</th>
+      <th>Reduced</th>
+    </tr>
+    <tr>
+      <td id="english-ordinal">0</td>
+      <td id="reduced">0</td>
+    </tr>
+  </table>
+
+  <script src="script.js"></script>
+</body>
 </html>
