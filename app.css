@@ -95,12 +95,12 @@
   /* Create three equal columns that float next to each other */
   .column {
     float: left;
-    width: 33.33%;
+    width: 50%;
   }
   
-  .column3 {
+  .column2 {
     float: right;
-    width: 50.33%;
+    width: 50%;
   }
   
   /* Clear floats after the columns */
