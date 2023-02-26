@@ -18,28 +18,19 @@ function calculate() {
     const reverseOrdinalValueLetterValue = reverseOrdinalValueCipher[letter];
     const reverseFullReductionLetterValue = reverseFullReductionCipher[letter];
 
-    englishOrdinalValue += englishOrdinalValueLetterValue;
-    reducedValue += reducedValueLetterValue;
-    reverseOrdinalValue += reverseOrdinalValueLetterValue;
-    reverseFullReduction += reverseFullReductionLetterValue;
-
-    if (!isNaN(englishOrdinalValueLetterValue)) {
+    if (englishOrdinalValueLetterValue) {
       englishOrdinalValue += englishOrdinalValueLetterValue;
     }
-
-    if (!isNaN(reducedValueLetterValue)) {
+    if (reducedValueLetterValue) {
       reducedValue += reducedValueLetterValue;
     }
-
-    if (!isNaN(englishOrdinalValueLetterValue)) {
+    if (reverseOrdinalValueLetterValue) {
       reverseOrdinalValue += reverseOrdinalValueLetterValue;
     }
-
-    if (!isNaN(reducedValueLetterValue)) {
+    if (reverseFullReductionLetterValue) {
       reverseFullReduction += reverseFullReductionLetterValue;
     }
-
-
+  
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
