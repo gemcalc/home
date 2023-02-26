@@ -1,186 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+    <title>Cipher Calculator</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gematria Calculator</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="app.css" />
-    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+        label {
+            font-size: 20px;
+            margin-right: 20px;
+        }
+        select {
+            font-size: 20px;
+        }
+        input[type="text"] {
+            font-size: 20px;
+            padding: 5px;
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-   <!-- Top navigation -->
-  <div class="topnav">
+    <h1>Cipher Calculator</h1>
+    <form>
+        <label for="input">Enter word:</label>
+        <input type="text" id="input" name="input" oninput="calculate()">
+        <br><br>
+        <label for="cipherSelect">Select cipher:</label>
+        <select id="cipherSelect" name="cipherSelect" onchange="calculate()">
+            <option value="0">English Ordinal</option>
+            <option value="1">Cipher 2</option>
+        </select>
+    </form>
+    <div id="result">Value: </div>
 
-    <!-- Centered link -->
-    <div class="topnav-centered">
-      <a href="https://gleeful-taffy-0137cb.netlify.app/" class="active">Home</a>
-    </div>
-  
-    <!-- Left-aligned links (default) -->
-    <a href="/sportsgematria.github.io/nba.html">Data Tables</a>
-    
-  
-    <!-- Right-aligned links -->
-    <div class="topnav-right">
-      <a href="https://github.com/mtwhite/sportsgematria.github.io">About</a>
-    </div>
-     </div>
+    <script>
+        // Define ciphers with letter values
+        let ciphers = [
+            { name: "English Ordinal", values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] },
+            { name: "Cipher 2", values: [26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] }
+        ];
 
-    <div class ="column">
-    <!-- Option Modal -->
-
-    <div class="modal fade" id="mod-option" tabindex="-1" role="dialog" aria-labelledby="mod-option-title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="mod-option-title">Options</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-
-                <!-- Option Form -->
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="option-showCount" checked>
-                    <label for="option-showCount" class="custom-control-label">Show Word/Letter Count</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="option-showReduct" checked>
-                    <label for="option-showReduct" class="custom-control-label">Show Reduction</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="option-showResult" checked>
-                    <label for="option-showResult" class="custom-control-label">Show Simple Result</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="option-showCiph" checked>
-                    <label for="option-showCiph" class="custom-control-label">Show Cipher Names</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="option-showCiphChart" checked>
-                    <label for="option-showCiphChart" class="custom-control-label">Show Cipher Chart</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- Cipher Modal -->
-
-    <div class="modal fade" id="mod-cipher" tabindex="-1" role="dialog" aria-labelledby="mod-option-title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="mod-cipher-title">Ciphers</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="nav nav-tabs" id="cipher-category" role="tablist" aria-orientation="vertical">
-                            
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <div class="tab-content" id="cipher-content">
-        
-                        </div>
-                    </div>
-                </div>
-                <!-- Cipher Form -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="toggleAll()">
-                    Toggle All
-                </button>
-                <button type="button" class="btn btn-success" onclick="toggleBase()">
-                    Base Only
-                </button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- Main App -->
-
-    <div class="container">
-        <div class="row p-2 mt-2 h5 text-center">
-            <div class="col">
-                <button id="mod-cipher-btn" class="btn btn-secondary" type="button" data-toggle="modal" data-target="#mod-cipher">Ciphers</button>
-                <button id="mod-option-btn" class="btn btn-light" type="button" data-toggle="modal" data-target="#mod-option">Options</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center h5 mt-3">Enter Word, Phrase or Number(s)</div>
-            <input type="text" class="form-control" id="textInput" placeholder="Put text here">
-        </div>
-        <div class="row border justify-content-between p-3 mt-2 align-items-between" id="GemetriaTable">
-            <table class="table table-borderless">
-                <tr>
-                    <td class="ciphName text-center">
-                        English Ordinal<br>
-                        <strong class="h2">0</strong>
-                    </td>
-                    <td class="ciphName text-center">
-                        Full Reduction<br>
-                        <strong class="h2">0</strong>
-                    </td>
-                    <td class="ciphName text-center">
-                        Reverse Ordinal<br>
-                        <strong class="h2">0</strong>
-                    </td>
-                    <td class="ciphName text-center">
-                        Reverse Full Reduction<br>
-                        <strong class="h2">0</strong>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="row mt-1" id="stringDetails">
-            <div class="col-12" id="strGeneral">
-
-            </div>
-            <div class="col-12" id="strSpecific">
-
-            </div>
-        </div>
-        <div class="row" id="CharBreakpoint">
-
-        </div>
-        <div class="row border p-1 mt-3" id="ciphGuide">
-
-        </div>
-        <div class="row p-2 mt-2 text-center">
-            <table class="table" id="historyCont">
-                <thead id="historyHeader">
-                    <tr>
-                        <th scope="col">History</th>
-                    </tr>
-                </thead>
-                <tbody id="savedStrings">
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-  </div>
+        // Function to calculate value of word based on selected cipher
+        function calculate() {
+            let word = document.getElementById("input").value.toUpperCase();
+            let cipherIndex = document.getElementById("cipherSelect").selectedIndex;
+            let cipherValues = ciphers[cipherIndex].values;
+            let sum = 0;
+            for (let i = 0; i < word.length; i++) {
+                let letterValue = cipherValues[word.charCodeAt(i) - 65]; // get letter value for selected cipher
+                if (letterValue) { // only add values for letters A-Z
+                    sum += letterValue;
+                }
+            }
+            document.getElementById("result").innerHTML = "Value: " + sum;
+        }
+    </script>
 </body>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="app.js"></script>
 </html>
