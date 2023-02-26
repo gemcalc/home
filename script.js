@@ -22,6 +22,24 @@ function calculate() {
     reducedValue += reducedValueLetterValue;
     reverseOrdinalValue += reverseOrdinalValueLetterValue;
     reverseFullReduction += reverseFullReductionLetterValue;
+
+    if (!isNaN(englishOrdinalValueLetterValue)) {
+      englishOrdinalValue += englishOrdinalValueLetterValue;
+    }
+
+    if (!isNaN(reducedValueLetterValue)) {
+      reducedValue += reducedValueLetterValue;
+    }
+
+    if (!isNaN(englishOrdinalValueLetterValue)) {
+      reverseOrdinalValue += reverseOrdinalValueLetterValue;
+    }
+
+    if (!isNaN(reducedValueLetterValue)) {
+      reverseFullReduction += reverseFullReductionLetterValue;
+    }
+
+
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
