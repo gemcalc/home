@@ -7,16 +7,16 @@
 <body>
   <h1>Word Calculator</h1>
   <label for="word">Enter a word:</label>
-  <input type="text" id="word" onkeyup="calculate()">
-  
+  <input type="text" id="word" onkeyup="calculate()" placeholder="Type here...">
+
   <table class="results">
     <tr>
-      <td>English Ordinal:</td>
-      <td id="english-ordinal"></td>
+      <th>English Ordinal</th>
+      <th>Reduced</th>
     </tr>
     <tr>
-      <td>Reduced:</td>
-      <td id="reduced"></td>
+      <td id="english-ordinal">0</td>
+      <td id="reduced">0</td>
     </tr>
   </table>
 
