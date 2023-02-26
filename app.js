@@ -1005,31 +1005,31 @@ function renderOptions(){
 $(document).ready(function () {
 
     $("#option-showCount").on("change", function(e){
-        form.options.showWordCount = $(this).is(":checked");
+        form.options.showWordCount = $(this).is(":unchecked");
 
         renderOptions();
     })
 
     $("#option-showReduct").on("change", function(e){
-        form.options.showReduction = $(this).is(":checked");
+        form.options.showReduction = $(this).is(":unchecked");
 
         renderOptions();
     })
 
     $("#option-showResult").on("change", function(e){
-        form.options.simpleResult = $(this).is(":checked");
+        form.options.simpleResult = $(this).is(":unchecked");
 
         renderOptions();
     })
 
     $("#option-showCiph").on("change", function(e){
-        form.options.ciphNames = $(this).is(":checked");
+        form.options.ciphNames = $(this).is(":unchecked");
 
         renderOptions();
     })
 
     $("#option-showCiphChart").on("change", function(e){
-        form.options.ciphChart = $(this).is(":checked");
+        form.options.ciphChart = $(this).is(":unchecked");
 
         renderOptions();
     })
