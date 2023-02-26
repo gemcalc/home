@@ -1,33 +1,20 @@
-// Get HTML elements
-const textInput = document.getElementById("text-input");
-const englishOrdinalOutput = document.getElementById("english-ordinal-output");
-const reducedOutput = document.getElementById("reduced-output");
+function calculate() {
+  const englishOrdinalValue = document.getElementById("english-ordinal-value");
+  const reducedValue = document.getElementById("reduced-value");
 
-// Add event listener to text input
-textInput.addEventListener("input", () => {
-  // Get input text and convert to uppercase
-  const inputText = textInput.value.toUpperCase();
+  let input = document.getElementById("text-input").value.toUpperCase();
+  let englishOrdinalSum = 0;
+  let reducedSum = 0;
 
-  // Calculate English Ordinal value
-  let englishOrdinalValue = 0;
-  for (let i = 0; i < inputText.length; i++) {
-    const letterValue = inputText.charCodeAt(i) - 64;
-    englishOrdinalValue += letterValue;
-  }
-  englishOrdinalOutput.innerText = englishOrdinalValue || "0";
+  for (let i = 0; i < input.length; i++) {
+    let letter = input.charAt(i);
 
-  // Calculate Reduced value
-  let reducedValue = englishOrdinalValue;
-  while (reducedValue > 9) {
-    let tempValue = 0;
-    for (let i = 0; i < reducedValue.toString().length; i++) {
-      tempValue += parseInt(reducedValue.toString()[i]);
+    if (letter.match(/[A-Z]/)) {
+      englishOrdinalSum += letter.charCodeAt(0) - 64;
+      reducedSum += letter.charCodeAt(0) - 96;
     }
-    reducedValue = tempValue;
   }
-  reducedOutput.innerText = reducedValue || "0";
-});
 
-// Initialize outputs to "0"
-englishOrdinalOutput.innerText = "0";
-reducedOutput.innerText = "0";
+  englishOrdinalValue.innerHTML = englishOrdinalSum;
+  reducedValue.innerHTML = reducedSum % 9 || 9;
+}
