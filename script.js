@@ -1,20 +1,16 @@
 function calculate() {
-  const englishOrdinalValue = document.getElementById("english-ordinal-value");
-  const reducedValue = document.getElementById("reduced-value");
+  const word = document.getElementById("word").value.toUpperCase();
 
-  let input = document.getElementById("text-input").value.toUpperCase();
-  let englishOrdinalSum = 0;
-  let reducedSum = 0;
+  let englishOrdinalValue = 0;
+  let reducedValue = 0;
 
-  for (let i = 0; i < input.length; i++) {
-    let letter = input.charAt(i);
+  for (let i = 0; i < word.length; i++) {
+    const letterValue = word.charCodeAt(i) - 64;
 
-    if (letter.match(/[A-Z]/)) {
-      englishOrdinalSum += letter.charCodeAt(0) - 64;
-      reducedSum += letter.charCodeAt(0) - 96;
-    }
+    englishOrdinalValue += letterValue;
+    reducedValue += parseInt(letterValue.toString().slice(-1));
   }
 
-  englishOrdinalValue.innerHTML = englishOrdinalSum;
-  reducedValue.innerHTML = reducedSum % 9 || 9;
+  document.getElementById("english-ordinal").textContent = englishOrdinalValue;
+  document.getElementById("reduced").textContent = reducedValue;
 }
