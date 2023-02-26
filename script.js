@@ -27,3 +27,7 @@ textInput.addEventListener("input", () => {
   }
   reducedOutput.innerText = reducedValue || "0";
 });
+
+// Initialize outputs to "0"
+englishOrdinalOutput.innerText = "0";
+reducedOutput.innerText = "0";
