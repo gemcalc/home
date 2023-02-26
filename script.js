@@ -67,8 +67,12 @@ function calculate() {
     const englishOrdinalValueLetterValue = englishOrdinalValueCipher[letter];
     const reducedValueLetterValue = reducedValueCipher[letter];
 
-    englishOrdinalValue += englishOrdinalValueLetterValue;
-    reducedValue += reducedValueLetterValue;
+    if (englishOrdinalValueLetterValue) {
+      englishOrdinalValue += englishOrdinalValueLetterValue;
+    }
+    if (reducedValueLetterValue) {
+      reducedValue += reducedValueLetterValue;
+    }
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
