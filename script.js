@@ -20,3 +20,4 @@ function calculate() {
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
   document.getElementById("reduced").textContent = reducedValue;
 }
+
