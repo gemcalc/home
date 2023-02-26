@@ -1,67 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Word Calculator</title>
-    <script>
-      let ciphers = [
-        {
-          name: "English Ordinal",
-          values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
-        },
-        {
-          name: "Reduced",
-          values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        }
-      ];
-      
-      function calculate() {
-        let word = document.getElementById("input").value.toUpperCase();
-        let cipherSelect = document.getElementById("cipherSelect");
-        let result1 = document.getElementById("result1");
-        let result2 = document.getElementById("result2");
-        
-        // loop through each cipher and calculate the value of the word for each one
-        for (let i = 0; i < ciphers.length; i++) {
-          let cipher = ciphers[i];
-          let cipherValues = cipher.values;
-          let sum = 0;
-          for (let j = 0; j < word.length; j++) {
-            let letterValue = cipherValues[word.charCodeAt(j) - 65];
-            if (letterValue) {
-              sum += letterValue;
-            }
-          }
-          let option = cipherSelect.options[i];
-          let cipherName = option.text;
-          option.text = cipherName.replace(/:.*/, ": " + sum); // update option text with cipher value
-          
-          if (i === 0) {
-            result1.innerHTML = "Values: " + cipherSelect.options[i].text;
-          } else if (i === 1) {
-            result2.innerHTML = "Values: " + cipherSelect.options[i].text;
-          }
-        }
+<head>
+  <title>Word Calculator</title>
+  <style>
+    body {
+      background-color: black;
+      color: lightblue;
+      font-weight: bold;
+      text-align: center;
+    }
+    input {
+      padding: 5px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    #result1, #result2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Word Calculator</h1>
+  <label for="word">Enter a word:</label>
+  <input type="text" id="word" onkeyup="calculate()">
+  
+  <label for="cipherSelect">Choose a cipher:</label>
+  <select id="cipherSelect" onchange="calculate()">
+    <option value="0">English Ordinal</option>
+    <option value="1">Reduced</option>
+  </select>
+  
+  <div id="result1">English Ordinal: <span></span></div>
+  <div id="result2">Reduced: <span></span></div>
+
+  <script>
+    function calculate() {
+      let word = document.getElementById("word").value.toUpperCase();
+      let cipher = parseInt(document.getElementById("cipherSelect").value);
+      let result1 = document.getElementById("result1").getElementsByTagName("span")[0];
+      let result2 = document.getElementById("result2").getElementsByTagName("span")[0];
+      let sum1 = 0;
+      let sum2 = 0;
+
+      for (let i = 0; i < word.length; i++) {
+        let letter = word.charCodeAt(i) - 64;
+        sum1 += letter;
+        sum2 += (letter % 9) || 9;
       }
-    </script>
-    <style>
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <label for="input">Enter a word:</label>
-    <input type="text" id="input" onkeyup="calculate()">
-    
-    <label for="cipherSelect">Select a cipher:</label>
-    <select id="cipherSelect">
-      <option>English Ordinal: 0</option>
-      <option>Reduced: 0</option>
-    </select>
-    
-    <label id="result1"></label>
-    <label id="result2"></label>
-  </body>
+
+      result1.innerText = sum1;
+      result2.innerText = sum2;
+    }
+  </script>
+</body>
 </html>
