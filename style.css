@@ -1,19 +1,18 @@
 body {
-    background-color: black;
-    color: lightblue;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  input {
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-  }
-  
-  #result1, #result2 {
-    margin-top: 20px;
-  }
-  
+  background-color: black;
+  color: lightblue;
+  font-weight: bold;
+  text-align: center;
+}
+
+table.results {
+  margin: auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table.results td {
+  padding: 10px;
+  border: 2px solid lightblue;
+}
