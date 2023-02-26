@@ -1,16 +1,16 @@
 function calculate() {
-  let word = document.getElementById("word").value.toUpperCase();
-  let eoResult = document.getElementById("english-ordinal").getElementsByTagName("span")[0];
-  let rdResult = document.getElementById("reduced").getElementsByTagName("span")[0];
-  let eoSum = 0;
-  let rdSum = 0;
+  const word = document.getElementById("word").value.toUpperCase();
+
+  let englishOrdinalValue = 0;
+  let reducedValue = 0;
 
   for (let i = 0; i < word.length; i++) {
-    let letter = word.charCodeAt(i) - 64;
-    eoSum += letter;
-    rdSum += (letter % 9) || 9;
+    const letterValue = word.charCodeAt(i) - 64;
+
+    englishOrdinalValue += letterValue;
+    reducedValue += parseInt(letterValue.toString().slice(-1));
   }
 
-  eoResult.innerText = eoSum;
-  rdResult.innerText = rdSum;
+  document.getElementById("english-ordinal").textContent = englishOrdinalValue;
+  document.getElementById("reduced").textContent = reducedValue;
 }
