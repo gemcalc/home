@@ -30,6 +30,8 @@ function calculate() {
     if (reverseFullReductionLetterValue) {
       reverseFullReduction += reverseFullReductionLetterValue;
     }
+
+    saveWord(word, englishOrdinalValue, reducedValue, reverseOrdinalValue, reverseFullReduction);
   
   }
 
@@ -38,15 +40,20 @@ function calculate() {
   document.getElementById("reverse-ordinal").textContent = reverseOrdinalValue;
   document.getElementById("reverse-full-reduction").textContent = reverseFullReduction;
 
-  if (event.key === "Enter") {
-    const tableBody = document.getElementById("words-table").querySelector("tbody");
-    const newRow = tableBody.insertRow(-1);
-    newRow.insertCell().textContent = word;
-    newRow.insertCell().textContent = englishOrdinalValue;
-    newRow.insertCell().textContent = reducedValue;
-    newRow.insertCell().textContent = reverseOrdinalValue;
-    newRow.insertCell().textContent = reverseFullReduction;
-
-    document.getElementById("word").value = "";
+  function saveWord(word, englishOrdinalValue, reducedValue, reverseOrdinalValue, reverseFullReduction) {
+    const table = document.getElementById("saved-words-table");
+    const row = table.insertRow(-1);
+    const wordCell = row.insertCell(0);
+    const englishOrdinalValueCell = row.insertCell(1);
+    const reducedValueCell = row.insertCell(2);
+    const reverseOrdinalValueCell = row.insertCell(3);
+    const reverseFullReductionCell = row.insertCell(4);
+  
+    wordCell.innerHTML = word;
+    englishOrdinalValueCell.innerHTML = englishOrdinalValue;
+    reducedValueCell.innerHTML = reducedValue;
+    reverseOrdinalValueCell.innerHTML = reverseOrdinalValue;
+    reverseFullReductionCell.innerHTML = reverseFullReduction;
   }
+  
 }
