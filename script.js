@@ -31,7 +31,6 @@ function calculate() {
       reverseFullReduction += reverseFullReductionLetterValue;
     }
 
-    addRow()
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
@@ -88,5 +87,6 @@ function addRow(word, englishOrdinalValue, reducedValue, reverseOrdinalValue, re
 function handleKeyPress(event) {
   if (event.keyCode === 13) {
     saveWord();
+    addRow();
   }
 }
