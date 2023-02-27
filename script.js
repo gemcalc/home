@@ -62,6 +62,27 @@ function saveWord() {
   reverseFullReductionCell.innerHTML = document.getElementById("reverse-full-reduction").textContent;
 }
 
+function addRow(word, englishOrdinalValue, reducedValue, reverseOrdinalValue, reverseFullReduction) {
+  const table = document.getElementById("results-table").getElementsByTagName('tbody')[0];
+  const newRow = table.insertRow();
+
+  const wordCell = newRow.insertCell(0);
+  wordCell.appendChild(document.createTextNode(word));
+
+  const eoCell = newRow.insertCell(1);
+  eoCell.appendChild(document.createTextNode(englishOrdinalValue));
+
+  const redCell = newRow.insertCell(2);
+  redCell.appendChild(document.createTextNode(reducedValue));
+
+  const roCell = newRow.insertCell(3);
+  roCell.appendChild(document.createTextNode(reverseOrdinalValue));
+
+  const rfrCell = newRow.insertCell(4);
+  rfrCell.appendChild(document.createTextNode(reverseFullReduction));
+}
+
+
 function handleKeyPress(event) {
   if (event.keyCode === 13) {
     saveWord();
