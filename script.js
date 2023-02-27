@@ -30,6 +30,8 @@ function calculate() {
     if (reverseFullReductionLetterValue) {
       reverseFullReduction += reverseFullReductionLetterValue;
     }
+
+    addRow()
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
