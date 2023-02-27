@@ -6,7 +6,8 @@
 </head>
 <body>
   <label for="word">Enter a word:</label>
-  <input type="text" id="word" onkeyup="calculate()" placeholder="Type here...">
+  <input type="text" id="word" onkeyup="checkInput(event)" onkeydown="calculate(event)" placeholder="Type here...">
+  
 
   <table class="results">
     <tr>
@@ -20,6 +21,17 @@
       <td id="reduced">0</td>
       <td id="reverse-ordinal">0</td>
       <td id="reverse-full-reduction">0</td>
+    </tr>
+  </table>
+
+  <h2>Saved Words</h2>
+  <table class="saved-words">
+    <tr>
+      <th>Word</th>
+      <th>English</th>
+      <th>Reduced</th>
+      <th>Reverse</th>
+      <th>RFR</th>
     </tr>
   </table>
 
