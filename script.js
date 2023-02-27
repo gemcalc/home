@@ -63,7 +63,7 @@ function saveWord() {
 }
 
 function addRow(word, englishOrdinalValue, reducedValue, reverseOrdinalValue, reverseFullReduction) {
-  const table = document.getElementById("results-table").getElementsByTagName('tbody')[0];
+  const table = document.getElementById("saved-words").getElementsByTagName('tbody')[0];
   const newRow = table.insertRow();
 
   const wordCell = newRow.insertCell(0);
