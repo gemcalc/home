@@ -30,6 +30,7 @@ function calculate() {
     if (reverseFullReductionLetterValue) {
       reverseFullReduction += reverseFullReductionLetterValue;
     }
+  
   }
 
   document.getElementById("english-ordinal").textContent = englishOrdinalValue;
@@ -37,12 +38,15 @@ function calculate() {
   document.getElementById("reverse-ordinal").textContent = reverseOrdinalValue;
   document.getElementById("reverse-full-reduction").textContent = reverseFullReduction;
 
-  // Save word to localStorage
-  const savedWords = JSON.parse(localStorage.getItem("savedWords")) || [];
-  if (word && !savedWords.includes(word)) {
-    savedWords.push(word);
-    localStorage.setItem("savedWords", JSON.stringify(savedWords));
-  }
+  if (event.key === "Enter") {
+    const tableBody = document.getElementById("words-table").querySelector("tbody");
+    const newRow = tableBody.insertRow(-1);
+    newRow.insertCell().textContent = word;
+    newRow.insertCell().textContent = englishOrdinalValue;
+    newRow.insertCell().textContent = reducedValue;
+    newRow.insertCell().textContent = reverseOrdinalValue;
+    newRow.insertCell().textContent = reverseFullReduction;
 
-  // Display saved words in table
-  const table = document.getElementById("saved-words-table");
+    document.getElementById("word").value = "";
+  }
+}
