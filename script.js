@@ -38,3 +38,32 @@ function calculate() {
   document.getElementById("reverse-full-reduction").textContent = reverseFullReduction;
 }
 
+function saveWord() {
+  const word = document.getElementById("word").value.toUpperCase();
+
+  // Call the calculate function to get the associated values
+  calculate();
+
+  // Create a new row in the table
+  const table = document.getElementById("saved-words");
+  const newRow = table.insertRow(-1);
+
+  // Add the word and associated values to the row
+  const wordCell = newRow.insertCell(0);
+  const englishOrdinalValueCell = newRow.insertCell(1);
+  const reducedValueCell = newRow.insertCell(2);
+  const reverseOrdinalValueCell = newRow.insertCell(3);
+  const reverseFullReductionCell = newRow.insertCell(4);
+
+  wordCell.innerHTML = word;
+  englishOrdinalValueCell.innerHTML = document.getElementById("english-ordinal").textContent;
+  reducedValueCell.innerHTML = document.getElementById("reduced").textContent;
+  reverseOrdinalValueCell.innerHTML = document.getElementById("reverse-ordinal").textContent;
+  reverseFullReductionCell.innerHTML = document.getElementById("reverse-full-reduction").textContent;
+}
+
+function handleKeyPress(event) {
+  if (event.keyCode === 13) {
+    saveWord();
+  }
+}
