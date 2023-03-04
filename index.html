@@ -2,29 +2,49 @@
 <html>
 <head>
   <title>Word Calculator</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <label for="word">Enter a word:</label>
-  <input type="text" id="word" onkeyup="calculate()" placeholder="Type here...">
+<body onload="setDate()">
 
-  <table class="results">
-    <tr>
-      <th>English</th>
-      <th>Reduced</th>
-      <th>Reverse</th>
-      <th>RFR</th>
-    </tr>
-    <tr>
-      <td id="english-ordinal">0</td>
-      <td id="reduced">0</td>
-      <td id="reverse-ordinal">0</td>
-      <td id="reverse-full-reduction">0</td>
-    </tr>
-  </table>
+  <nav>
+    
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="nba.html">NBA</a></li>
+        <li><a href="nhl.html">NHL</a></li>
+    </ul>
 
+  </nav>
   
 
-  <script src="script.js"></script>
+  <div class="container">
+    
+   
+
+    <div class="input-container">
+      
+      <input type="text" id="input">
+      <button onclick="calculate()">Calculate</button>
+    </div>
+    
+    <div id="output"></div>
+    <table id="wordTable">
+      
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>EO</th>
+          <th>FR</th>
+          <th>RO</th>
+          <th>RR</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
