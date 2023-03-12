@@ -144,13 +144,18 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('nav ul');
 
-//Set Date
-function setDate() {
-  var dateElem = document.getElementById("date");
-  var currentDate = new Date();
-  var month = currentDate.getMonth() + 1;
-  var day = currentDate.getDate();
-  var year = currentDate.getFullYear();
-  dateElem.innerHTML = month + "/" + day + "/" + year;
-}
+
+
+
+
+
+
+
+
+
+
+
+
