@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Properties</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="setDate()">
+
+
+  <body>
+    <h1></h1>
+    <div class="container">
+      <h1>Number Properties</h1>
+      <div class="box">
+        <div id="result"></div>
+        <form>
+          <label for="number">Enter a number:</label>
+          <br>
+          <input type="number" id="number" name="number" required>
+          <br>
+          <button type="submit">Check</button>
+        </form>
+        
+      </div>
+    </div>
+   
+    <script>
+      function isPrime(n) {
+        if (n <= 1) {
+          return false;
+        }
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+          if (n % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+      const form = document.querySelector('form');
+      const numberInput = document.getElementById('number');
+      const resultDiv = document.getElementById('result');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const number = Number(numberInput.value);
+        if (!isNaN(number) && isPrime(number)) {
+          let count = 0;
+          for (let i = 2; i <= number; i++) {
+            if (isPrime(i)) {
+              count++;
+            }
+          }
+          resultDiv.innerHTML = `
+            <div id="number">${number}</div>
+            <div id="prime">${count}th prime!</div>
+          `;
+        } else if (!isNaN(number)) {
+          resultDiv.textContent = `Not Prime`;
+        } else {
+          resultDiv.textContent = ``;
+        }
+      });
+      numberInput.addEventListener('input', () => {
+        resultDiv.textContent = ``;
+      });
+    </script>
+    
+  <style>
+		body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.box {
+  margin-top: 50px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#result #number {
+  font-size: 50px;
+}
+
+#result #prime {
+  font-size: 32px;
+  color: green;
+}
+
+	</style>
+   
+
+
+  <script src="number_prop.js"></script>
+</body>
+</html>
