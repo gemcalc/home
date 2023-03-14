@@ -149,6 +149,41 @@ const navLinks = document.querySelector('nav ul');
 
 
 
+//Prime Number Checker
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const number = Number(document.getElementById('number').value);
+  if (!isNaN(number) && isPrime(number)) {
+    let count = 0;
+    for (let i = 2; i <= number; i++) {
+      if (isPrime(i)) {
+        count++;
+      }
+    }
+    document.getElementById('result').innerHTML = `
+      <div id="number">${number}</div>
+      <div id="prime">${count}th prime!</div>
+    `;
+  } else if (!isNaN(number)) {
+    document.getElementById('result').textContent = `Not Prime`;
+  } else {
+    document.getElementById('result').textContent = `Not Prime`;
+  }
+});
+
+
 
 
 
