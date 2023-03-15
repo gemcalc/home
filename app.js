@@ -162,9 +162,11 @@ function isPrime(n) {
   return true;
 }
 const form = document.querySelector('form');
+const numberInput = document.getElementById('number');
+const resultDiv = document.getElementById('result');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  const number = Number(document.getElementById('number').value);
+  const number = Number(numberInput.value);
   if (!isNaN(number) && isPrime(number)) {
     let count = 0;
     for (let i = 2; i <= number; i++) {
@@ -172,16 +174,25 @@ form.addEventListener('submit', (event) => {
         count++;
       }
     }
-    document.getElementById('result').innerHTML = `
+    resultDiv.innerHTML = `
       <div id="number">${number}</div>
       <div id="prime">${count}th prime!</div>
     `;
   } else if (!isNaN(number)) {
-    document.getElementById('result').textContent = `Not Prime`;
+    resultDiv.textContent = `Not Prime`;
   } else {
-    document.getElementById('result').textContent = `Not Prime`;
+    resultDiv.textContent = ``;
   }
 });
+numberInput.addEventListener('input', () => {
+  resultDiv.textContent = ``;
+});
+
+
+
+
+
+    
 
 
 

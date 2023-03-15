@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two-Column Flexbox Layout</title>
+    <style>
+      /* Styles for the overall layout */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      /* Styles for the left column */
+      .left {
+        background-color: #eee;
+        flex-basis: 300px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        padding: 20px;
+      }
+      
+      /* Styles for the right column */
+      .right {
+        background-color: #ddd;
+        flex-basis: calc(100% - 300px);
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 20px;
+      }
+      
+      /* Clearfix hack to ensure container expands to contain floated elements */
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container clearfix">
+      <div class="left">
+        <h2>Left Column</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin, velit vel consequat bibendum, turpis nisi sodales sapien, at aliquam risus nisl ut libero.</p>
+      </div>
+      <div class="right">
+        <h2>Right Column</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin, velit vel consequat bibendum, turpis nisi sodales sapien, at aliquam risus nisl ut libero.</p>
+      </div>
+    </div>
+  </body>
+</html>
